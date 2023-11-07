@@ -1,8 +1,8 @@
 package nextstep.fp;
 
-public class ConditionalImpl implements Conditional{
+public class EvenConditional implements Conditional{
     @Override
     public boolean test(Integer number) {
-        return false;
+        return number%2==0;
     }
 }
