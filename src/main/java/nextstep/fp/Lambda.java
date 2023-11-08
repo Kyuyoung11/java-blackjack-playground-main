@@ -46,13 +46,11 @@ public class Lambda {
 //            }
 //        }
 //        return total;
-        return numbers.stream()
-                .filter(number->number%2==0)
-                .mapToInt(number->number)
-                .sum();
+        return sumAll(numbers, new EvenConditional());
     }
 
     public static int sumAllOverThree(List<Integer> numbers) {
+        //1. 원래거
 //        int total = 0;
 //        for (int number : numbers) {
 //            if (number > 3) {
@@ -60,9 +58,15 @@ public class Lambda {
 //            }
 //        }
 //        return total;
-        return numbers.stream()
-                .filter(number->number>3)
-                .mapToInt(number->number)
-                .sum();
+
+        //2. stream 사용
+//        return numbers.stream()
+//                .filter(number->number>3)
+//                .mapToInt(number->number)
+//                .sum();
+
+        //3. 인터페이스 분리
+        return sumAll(numbers, new OverThreeConditional());
+
     }
 }
