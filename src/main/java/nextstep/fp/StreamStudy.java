@@ -43,6 +43,7 @@ public class StreamStudy {
                 .filter(word->word.length()>12)
                 .sorted(((o1, o2) -> o1.length() - o2.length()))
                 .distinct()
+                .map(String::toLowerCase)
                 .limit(100)
                 .forEach(System.out::println);
     }
