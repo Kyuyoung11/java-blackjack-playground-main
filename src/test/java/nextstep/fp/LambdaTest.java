@@ -40,8 +40,7 @@ public class LambdaTest {
 
     @Test
     public void sumAllEven() throws Exception {
-//        int sum = Lambda.sumAllEven(numbers);
-        int sum = Lambda.sumAll(numbers, new EvenConditional());
+        int sum = Lambda.sumAllEven(numbers);
         assertThat(sum).isEqualTo(12);
     }
 
