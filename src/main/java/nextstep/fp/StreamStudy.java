@@ -20,6 +20,16 @@ public class StreamStudy {
             if (w.length() > 12) count++;
         }
         return count;
+
+    }
+
+    private static boolean _isNumber(String word) {
+        try {
+            Integer.parseInt(word);
+            return true;
+        } catch(Exception e) {
+            return false;
+        }
     }
 
     public static void printLongestWordTop100() throws IOException {
@@ -39,6 +49,9 @@ public class StreamStudy {
     }
 
     public static long sumOverThreeAndDouble(List<Integer> numbers) {
-        return 0;
+        return numbers.stream()
+                .filter(num->num > 3)
+                .map(num->num*2)
+                .reduce(0, Integer::sum);
     }
 }
