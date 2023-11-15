@@ -38,6 +38,10 @@ public class Lambda {
                 .sum();
     }
 
+    public static int sumAll(List<Integer> numbers) {
+        return sumAll(numbers, number->true);
+    }
+
     public static int sumAllEven(List<Integer> numbers) {
 //        int total = 0;
 //        for (int number : numbers) {
@@ -46,7 +50,7 @@ public class Lambda {
 //            }
 //        }
 //        return total;
-        return sumAll(numbers, new EvenConditional());
+        return sumAll(numbers, number->number%2==0);
     }
 
     public static int sumAllOverThree(List<Integer> numbers) {
@@ -66,7 +70,7 @@ public class Lambda {
 //                .sum();
 
         //3. 인터페이스 분리
-        return sumAll(numbers, new OverThreeConditional());
+        return sumAll(numbers, number->number>3);
 
     }
 }
