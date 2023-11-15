@@ -2,6 +2,7 @@ package nextstep.optional;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 public class Users {
@@ -12,11 +13,12 @@ public class Users {
             new User("pobi", 30),
             new User("jk", 40),
             new User("honux", 45),
-            null //TODO: NULL 거르는 시도 해보기
+            null
             );
 
     User getUser(String name) {
         return this.users.stream()
+                .filter(Objects::nonNull)
                 .filter(user->user.matchName(name))
                 .findAny()
                 .orElse(DEFAULT_USER);
