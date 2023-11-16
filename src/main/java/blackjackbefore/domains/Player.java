@@ -2,20 +2,15 @@ package blackjackbefore.domains;
 
 import java.util.List;
 
-public class Player {
+public class Player extends Person{
     private String name;
-    private Cards cards;
 
     public Player(String name) {
-        this.name = name;
-        this.cards = new Cards();
+        super();
+        this.name=name;
     }
 
     public String getName() {
         return name;
-    }
-
-    public Cards getCards() {
-        return cards;
     }
 }
