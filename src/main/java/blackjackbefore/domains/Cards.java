@@ -14,4 +14,8 @@ public class Cards {
     public Cards(List<Card> cards) {
         this.cards = cards;
     }
+
+//    public boolean isContain(Card card) {
+//        return cards.contains(card);
+//    }
 }

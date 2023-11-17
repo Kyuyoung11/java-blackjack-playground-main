@@ -7,7 +7,7 @@ public class CardDispenserTest {
     @Test
     void 랜덤카드지급테스트() {
         CardDispenser cardDispenser = new CardDispenser();
-        System.out.println(cardDispenser.getRandomOneCard());
+        System.out.println(cardDispenser.getRandomOneCard().convertToNoticing());
 
     }
 }
