@@ -1,11 +1,19 @@
 package blackjackbefore.domains;
 
-public class Card {
-    private String shape;
-    private String number;
+import blackjackbefore.enums.CardNumber;
+import blackjackbefore.enums.CardShape;
 
-    public Card(String shape, String number) {
+public class Card {
+    private CardShape shape;
+    private CardNumber number;
+
+    public Card(CardShape shape, CardNumber number) {
         this.shape = shape;
         this.number = number;
+    }
+
+    public String convertToNoticing() {
+        return this.shape.getNoticeName()+this.number.getNoticeName();
+
     }
 }
