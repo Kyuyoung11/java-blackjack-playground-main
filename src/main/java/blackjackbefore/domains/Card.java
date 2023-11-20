@@ -16,4 +16,12 @@ public class Card {
         return this.shape.getNoticeName()+this.number.getNoticeName();
 
     }
+
+    public CardShape getShape() {
+        return shape;
+    }
+
+    public CardNumber getNumber() {
+        return number;
+    }
 }
