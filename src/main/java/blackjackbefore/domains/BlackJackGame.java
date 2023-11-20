@@ -1,24 +1,22 @@
 package blackjackbefore.domains;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class BlackJackGame {
-    private List<Player> players;
-    private Dealer dealer;
-    private Cards cards;
+    private List<Participant> participants;
+    private static final CardDispenser cardDispenser = new CardDispenser();
 
-    public BlackJackGame(List<Player> players) {
-        this.players = players;
+    public BlackJackGame(List<Participant> participants) {
+        this.participants = new ArrayList<>();
+        this.participants.add(new Dealer());
+        this.participants.addAll(participants);
     }
 
     public void initGame() {
-        //1. 딜러 카드 2장 지급
-
-        //2. 플레이어 카드 2장 지급
-        players.forEach(player->getOneCard(cards));
-    }
-
-    public String getOneCard(Cards cards) {
-        return "2클로버";
+        //1. 딜러, 플레이어 카드 2장 지급
+        for (int i=0; i<2; i++) {
+            participants.forEach(player -> player.provideCard(cardDispenser.getRandomOneCard()));
+        }
     }
 }
