@@ -15,7 +15,7 @@ public class Cards {
         this.cards = cards;
     }
 
-//    public boolean isContain(Card card) {
-//        return cards.contains(card);
-//    }
+    public boolean isContain(Card card) {
+        return cards.contains(card);
+    }
 }

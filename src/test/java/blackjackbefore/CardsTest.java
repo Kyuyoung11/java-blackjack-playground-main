@@ -23,10 +23,9 @@ public class CardsTest {
         Cards cards = new Cards(Arrays.asList(c1,c2));
     }
 
-    //TODO : 이거부터
-//    @Test
-//    void contains테스트() {
-//        Card testCard = new Card(CardShape.DIAMOND, CardNumber.ACE);
-//        assertTrue(cards.isContain(testCard));
-//    }
+    @Test
+    void contains테스트() {
+        Card testCard = new Card(CardShape.DIAMOND, CardNumber.ACE);
+        assertTrue(cards.isContain(testCard));
+    }
 }
