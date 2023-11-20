@@ -24,4 +24,8 @@ public class Card {
     public CardNumber getNumber() {
         return number;
     }
+
+    public int getScore() {
+        return number.getScore();
+    }
 }
