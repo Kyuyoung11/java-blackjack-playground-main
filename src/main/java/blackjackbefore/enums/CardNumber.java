@@ -28,6 +28,10 @@ public enum CardNumber {
         return noticeName;
     }
 
+    public int getScore() {
+        return score;
+    }
+
     public static CardNumber getRandomNumber() {
         return values()[(int)(Math.random()*values().length)];
     }
