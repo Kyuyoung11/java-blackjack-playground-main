@@ -18,4 +18,6 @@ public abstract class Participant {
     public void provideCard(Card card) {
         this.cards.addCard(card);
     }
+
+    public abstract void printInitCards();
 }
