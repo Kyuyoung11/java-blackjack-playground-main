@@ -1,5 +1,7 @@
 package blackjackbefore.domains;
 
+import blackjackbefore.view.Printer;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,5 +20,8 @@ public class BlackJackGame {
         for (int i=0; i<2; i++) {
             participants.forEach(player -> player.provideCard(cardDispenser.getRandomOneCard()));
         }
+
+        //2. 지급 결과 Print
+        Printer.printInitCards(participants);
     }
 }
