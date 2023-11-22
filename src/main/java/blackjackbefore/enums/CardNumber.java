@@ -15,8 +15,8 @@ public enum CardNumber {
     KING("K",10)
     ;
 
-    private String noticeName;
-    private int score;
+    private final String noticeName;
+    private final int score;
 
 
     CardNumber(String noticeName, int score) {
