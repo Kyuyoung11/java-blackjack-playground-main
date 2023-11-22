@@ -24,4 +24,10 @@ public class BlackJackGame {
         //2. 지급 결과 Print
         Printer.printInitCards(participants);
     }
+    
+    public void getMoreCard() {
+        participants.stream()
+                .filter(Participant::isProvideMoreCard)
+                .forEach(participant-> cardDispenser.getRandomOneCard());
+    }
 }

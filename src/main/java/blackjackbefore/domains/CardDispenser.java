@@ -19,8 +19,8 @@ public class CardDispenser {
     }
 
     public boolean isUniqueCard(Card card) {
-//        return this.providedCard.isContain(card);
-        return true;
+        return this.providedCard.isContain(card);
+//        return true;
     }
 
 
