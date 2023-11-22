@@ -6,7 +6,7 @@ public enum CardShape {
     SPADE("스페이드"),
     CLOVER("클로버");
 
-    private String noticeName;
+    private final String noticeName;
 
     CardShape(String noticeName) {
         this.noticeName = noticeName;

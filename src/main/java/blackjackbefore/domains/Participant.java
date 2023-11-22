@@ -20,4 +20,6 @@ public abstract class Participant {
     }
 
     public abstract void printInitCards();
+
+    public abstract boolean isProvideMoreCard();
 }
