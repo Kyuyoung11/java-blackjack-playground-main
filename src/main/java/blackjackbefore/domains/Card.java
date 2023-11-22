@@ -13,7 +13,7 @@ public class Card {
     }
 
     public String convertToNoticing() {
-        return this.shape.getNoticeName()+this.number.getNoticeName();
+        return this.number.getNoticeName()+this.shape.getNoticeName();
 
     }
 
