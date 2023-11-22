@@ -24,10 +24,14 @@ public class BlackJackGame {
         //2. 지급 결과 Print
         Printer.printInitCards(participants);
     }
-    
+
+    //TODO : 한 플레이어가 21이상이 될때까지 LOOP 필요
     public void getMoreCard() {
         participants.stream()
                 .filter(Participant::isProvideMoreCard)
-                .forEach(participant-> cardDispenser.getRandomOneCard());
+                .forEach(participant-> {
+                    participant.provideCard(cardDispenser.getRandomOneCard());
+                    participant.printInitCards();
+                });
     }
 }
