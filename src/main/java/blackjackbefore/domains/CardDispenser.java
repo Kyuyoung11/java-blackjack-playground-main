@@ -7,20 +7,24 @@ import blackjackbefore.enums.CardShape;
 public class CardDispenser {
     private Cards providedCard;
 
+    public CardDispenser() {
+        providedCard = new Cards();
+    }
+
     public Card getRandomOneCard() {
         CardNumber number = CardNumber.getRandomNumber();
         CardShape shape = CardShape.getRandomNumber();
         Card card = new Card(shape, number);
-        if(!isUniqueCard(card)) {
+        if(isContain(card)) {
             getRandomOneCard();
         }
+        this.providedCard.addCard(card);
 
         return card;
     }
 
-    public boolean isUniqueCard(Card card) {
+    public boolean isContain(Card card) {
         return this.providedCard.isContain(card);
-//        return true;
     }
 
 
