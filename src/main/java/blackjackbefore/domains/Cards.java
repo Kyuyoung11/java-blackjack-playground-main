@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 
 public class Cards {
     //일급컬렉션으로 안씀
+    //TODO : 일급컬렉션으로 해볼 시도를 나중에 한번...
     private List<Card> cards;
 
     public Cards() {
