@@ -23,6 +23,5 @@ public class Dealer extends Participant {
     @Override
     public void getMoreCard(CardDispenser cardDispenser) {
         this.provideCard(cardDispenser.getRandomOneCard());
-        this.printInitCards();
     }
 }

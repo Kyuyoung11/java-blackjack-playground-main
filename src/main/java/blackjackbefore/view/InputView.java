@@ -11,4 +11,13 @@ public class InputView {
         String yn = sc.next();
         return YnEnum.valueOfYn(yn).getBooleanValue();
     }
+
+    public static int askBetAmount(String name) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println(name+"의 베팅 금액은?");
+        int inputValue = sc.nextInt();
+        System.out.println();
+
+        return inputValue;
+    }
 }

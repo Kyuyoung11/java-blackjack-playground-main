@@ -28,4 +28,15 @@ public class BlackJackGame {
     public void getMoreCard() {
         participants.forEach(participant-> participant.getMoreCard(cardDispenser));
     }
+
+    public void setBetAmount() {
+        participants.stream()
+                .filter(participant -> participant.getClass().equals(Player.class))
+                .forEach(participant -> ((Player) participant).setBetAmount());
+        System.out.println();
+    }
+
+    public void calculateScore() {
+        participants.forEach(participant -> Printer.printScore(participant));
+    }
 }
