@@ -16,6 +16,9 @@ public class Main {
         //1. 게임 시작
         blackJackGame.initGame();
 
+        //2. 베팅 금액 입력
+        blackJackGame.setBetAmount();
+
         //2. 카드 추가 지급
         blackJackGame.getMoreCard();
     }

@@ -7,10 +7,12 @@ import java.util.stream.Collectors;
 public class Player extends Participant {
     public static final int LIMIT_MORE_CARD_SUM = 21;
     private String name;
+    private int betAmount;
 
     public Player(String name) {
         super();
         this.name=name;
+        this.betAmount=0;
     }
     public String getName() {
         return name;
@@ -33,5 +35,9 @@ public class Player extends Participant {
             this.provideCard(cardDispenser.getRandomOneCard());
             this.printInitCards();
         }
+    }
+
+    public void setBetAmount() {
+        this.betAmount = InputView.askBetAmount(this.name);
     }
 }
