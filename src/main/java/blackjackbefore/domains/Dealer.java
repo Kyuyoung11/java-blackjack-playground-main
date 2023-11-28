@@ -19,4 +19,10 @@ public class Dealer extends Participant {
     public boolean isProvideMoreCard() {
         return this.getCardsSum() <= LIMIT_MORE_CARD_SUM;
     }
+
+    @Override
+    public void getMoreCard(CardDispenser cardDispenser) {
+        this.provideCard(cardDispenser.getRandomOneCard());
+        this.printInitCards();
+    }
 }
