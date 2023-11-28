@@ -27,4 +27,11 @@ public class Player extends Participant {
         return InputView.askForAdditionalCard(this.name);
 
     }
+    @Override
+    public void getMoreCard(CardDispenser cardDispenser) {
+        while (isProvideMoreCard()) {
+            this.provideCard(cardDispenser.getRandomOneCard());
+            this.printInitCards();
+        }
+    }
 }
