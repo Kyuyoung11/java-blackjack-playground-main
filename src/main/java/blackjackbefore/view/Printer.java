@@ -1,6 +1,5 @@
 package blackjackbefore.view;
 
-import blackjackbefore.domains.Dealer;
 import blackjackbefore.domains.Participant;
 import blackjackbefore.domains.Player;
 
@@ -15,5 +14,9 @@ public class Printer {
                 .collect(Collectors.joining(","));
         System.out.println("딜러와 "+players+"에게 2장의 카드를 나누었습니다.");
         participants.forEach(Participant::printInitCards);
+        System.out.println();
+    }
+
+    public static void printScore(Participant participant) {
     }
 }

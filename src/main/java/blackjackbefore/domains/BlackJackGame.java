@@ -1,8 +1,6 @@
 package blackjackbefore.domains;
 
-import blackjackbefore.view.InputView;
 import blackjackbefore.view.Printer;
-import jdk.internal.util.xml.impl.Input;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,5 +33,10 @@ public class BlackJackGame {
         participants.stream()
                 .filter(participant -> participant.getClass().equals(Player.class))
                 .forEach(participant -> ((Player) participant).setBetAmount());
+        System.out.println();
+    }
+
+    public void calculateScore() {
+        participants.forEach(participant -> Printer.printScore(participant));
     }
 }
