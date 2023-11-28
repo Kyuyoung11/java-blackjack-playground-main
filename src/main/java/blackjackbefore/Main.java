@@ -13,13 +13,16 @@ public class Main {
 
         BlackJackGame blackJackGame = new BlackJackGame(Arrays.asList(p1,p2,p3));
 
-        //1. 게임 시작
-        blackJackGame.initGame();
-
-        //2. 베팅 금액 입력
+        //1. 베팅 금액 입력
         blackJackGame.setBetAmount();
 
-        //2. 카드 추가 지급
+        //2. 게임 시작
+        blackJackGame.initGame();
+
+        //3. 카드 추가 지급
         blackJackGame.getMoreCard();
+
+        //4. 점수 계산
+        blackJackGame.calculateScore();
     }
 }

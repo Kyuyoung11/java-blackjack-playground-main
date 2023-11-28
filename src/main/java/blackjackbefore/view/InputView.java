@@ -15,6 +15,9 @@ public class InputView {
     public static int askBetAmount(String name) {
         Scanner sc = new Scanner(System.in);
         System.out.println(name+"의 베팅 금액은?");
-        return sc.nextInt();
+        int inputValue = sc.nextInt();
+        System.out.println();
+
+        return inputValue;
     }
 }
