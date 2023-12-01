@@ -37,6 +37,6 @@ public class BlackJackGame {
     }
 
     public void calculateScore() {
-        participants.forEach(participant -> Printer.printScore(participant));
+        participants.forEach(Printer::printScore);
     }
 }
