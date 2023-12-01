@@ -22,4 +22,9 @@ public class BlackJackGameTest {
     void initGame() {
         blackJackGame.initGame();
     }
+
+    @Test
+    void 점수계산() {
+        blackJackGame.calculateScore();
+    }
 }

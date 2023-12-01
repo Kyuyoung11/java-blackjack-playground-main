@@ -18,5 +18,6 @@ public class Printer {
     }
 
     public static void printScore(Participant participant) {
+        System.out.println(participant.getCards().getScoreSum());
     }
 }
