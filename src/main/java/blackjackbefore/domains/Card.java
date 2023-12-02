@@ -28,4 +28,9 @@ public class Card {
     public int getScore() {
         return number.getScore();
     }
+
+    public boolean isEqual(Card card) {
+        return this.getShape().equals(card.getShape())
+                && this.getNumber().equals(card.getNumber());
+    }
 }
