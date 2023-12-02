@@ -1,32 +1,27 @@
 package blackjackbefore.domains;
 
 import blackjackbefore.view.InputView;
+import blackjackbefore.view.Printer;
 
-import java.util.stream.Collectors;
 
 public class Player extends Participant {
     public static final int LIMIT_MORE_CARD_SUM = 21;
-    private String name;
     private int betAmount;
 
     public Player(String name) {
-        super();
-        this.name=name;
+        super(name);
         this.betAmount=0;
-    }
-    public String getName() {
-        return name;
     }
 
     @Override
     public void printInitCards() {
-        System.out.println(name+"카드: "+String.join(",", this.getCards().getNoticingList()));
+        Printer.printCards(this, this.getCards().getSize());
     }
 
     @Override
     public boolean isProvideMoreCard() {
         if (this.getCardsSum() > LIMIT_MORE_CARD_SUM) return false;
-        return InputView.askForAdditionalCard(this.name);
+        return InputView.askForAdditionalCard(super.getName());
 
     }
     @Override
@@ -38,6 +33,6 @@ public class Player extends Participant {
     }
 
     public void setBetAmount() {
-        this.betAmount = InputView.askBetAmount(this.name);
+        this.betAmount = InputView.askBetAmount(super.getName());
     }
 }

@@ -19,11 +19,12 @@ public class Cards {
 
 
     public boolean isContain(Card card) {
-        return getNoticingList().contains(card.convertToNoticing());
+        return cards.stream()
+                .anyMatch(c->c.isEqual(card));
     }
 
-    public List<String> getNoticingList() {
-        return cards.stream()
+    public List<String> getNoticingList(int count) {
+        return cards.subList(0,count).stream()
                 .map(Card::convertToNoticing)
                 .collect(Collectors.toList());
     }
@@ -36,5 +37,9 @@ public class Cards {
 
     public void addCard(Card card) {
         this.cards.add(card);
+    }
+
+    public int getSize() {
+        return cards.size();
     }
 }
