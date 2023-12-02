@@ -18,7 +18,7 @@ public class BlackJackGame {
     public void initGame() {
         //1. 딜러, 플레이어 카드 2장 지급
         for (int i=0; i<2; i++) {
-            participants.forEach(player -> player.provideCard(cardDispenser.getRandomOneCard()));
+            participants.forEach(participant -> participant.provideCard(cardDispenser.getRandomOneCard()));
         }
 
         //2. 지급 결과 Print

@@ -2,14 +2,20 @@ package blackjackbefore.domains;
 
 public abstract class Participant {
     private Cards cards;
+    private String name;
 
-    public Participant() {
+    public Participant(String name) {
         this.cards = new Cards();
+        this.name = name;
     }
 
     public Cards getCards() {
         return cards;
     }
+    public String getName() {
+        return name;
+    }
+
 
     public int getCardsSum() {
         return cards.getScoreSum();
