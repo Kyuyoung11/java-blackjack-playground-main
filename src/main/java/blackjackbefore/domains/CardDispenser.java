@@ -16,10 +16,9 @@ public class CardDispenser {
         CardShape shape = CardShape.getRandomNumber();
         Card card = new Card(shape, number);
         if(isContain(card)) {
-            getRandomOneCard();
+            return getRandomOneCard();
         }
         this.providedCard.addCard(card);
-
         return card;
     }
 
