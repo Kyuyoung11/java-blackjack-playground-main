@@ -6,11 +6,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BlackJackGame {
-    private List<Participant> participants;
-    private static final CardDispenser cardDispenser = new CardDispenser();
+    private final List<Participant> participants;
+    private final CardDispenser cardDispenser;
 
     public BlackJackGame(List<Participant> participants) {
         this.participants = new ArrayList<>();
+        this.cardDispenser = new CardDispenser();
         this.participants.add(new Dealer());
         this.participants.addAll(participants);
     }
@@ -23,6 +24,10 @@ public class BlackJackGame {
 
         //2. 지급 결과 Print
         Printer.printInitCards(participants);
+
+        //3. 지급 결과 집계
+        AmountCalculator.checkInitCards(participants);
+
     }
 
     public void getMoreCard() {
@@ -32,11 +37,15 @@ public class BlackJackGame {
     public void setBetAmount() {
         participants.stream()
                 .filter(participant -> participant.getClass().equals(Player.class))
-                .forEach(participant -> ((Player) participant).setBetAmount());
+                .forEach(participant -> ((Player) participant).initBetAmount());
         System.out.println();
     }
 
     public void calculateScore() {
         participants.forEach(Printer::printScore);
+    }
+
+    public void calculateAmount() {
+
     }
 }

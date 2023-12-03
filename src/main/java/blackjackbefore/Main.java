@@ -24,5 +24,8 @@ public class Main {
 
         //4. 점수 계산
         blackJackGame.calculateScore();
+
+        //5. 수익 계산
+        blackJackGame.calculateAmount();
     }
 }
