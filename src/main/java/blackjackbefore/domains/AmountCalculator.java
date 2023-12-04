@@ -7,15 +7,17 @@ import java.util.List;
 public class AmountCalculator {
     private static final int BLACK_JACK_NUMBER = 21;
     public static void calculateAmount(List<Participant> participants) {
-        CardsStatus dealerStatus = _getDealerCardsStatus(participants);
+        Dealer dealer = _getDealer(participants);
 
-        if (CardsStatus.BURST == dealerStatus) return;
-        if (CardsStatus.BLACKJACK == dealerStatus) {
-            participants.stream()
-                    .filter(participant -> participant.getClass().equals(Player.class))
-                    .filter(participant -> CardsStatus.isNORMAL(participant.getCardsSum()))
-                    .forEach(participant -> ((Player) participant).setAmount(0));
+        if (CardsStatus.isBURST(dealer.getCardsSum())) return;
+        if (CardsStatus.isBLACKJACK(dealer.getCardsSum())) {
+            _changeParticipantsAmount(participants, participant -> CardsStatus.isNORMAL(participant.getCardsSum()), 0);
             return;
+        }
+        if (CardsStatus.isNORMAL(dealer.getCardsSum())) {
+            _changeParticipantsAmount(participants,
+                    participant -> CardsStatus.isNORMAL(participant.getCardsSum()) && dealer.getCardsSum() > participant.getCardsSum(),
+                    0);
         }
 
 
@@ -24,26 +26,25 @@ public class AmountCalculator {
 
     public static void checkInitCards(List<Participant> participants) {
         double multiplyNumber = _getMultiplyNumber(participants);
+        _changeParticipantsAmount(participants, participant->CardsStatus.isBLACKJACK(participant.getCardsSum()), multiplyNumber);
+    }
 
+    private static void _changeParticipantsAmount(List<Participant> participants, Conditional conditional, double multiplyNumber) {
         participants.stream()
                 .filter(participant -> participant.getClass().equals(Player.class))
-                .filter(participant -> CardsStatus.isBLACKJACK(participant.getCardsSum()))
+                .filter(conditional::scoreFilterCondition)
                 .forEach(participant -> ((Player) participant).multiplyAmount(multiplyNumber));
     }
 
-    private static CardsStatus _getDealerCardsStatus(List<Participant> participants) {
-        //1. 딜러
-        Dealer dealer = (Dealer) participants.stream()
+    private static Dealer _getDealer(List<Participant> participants) {
+        return (Dealer) participants.stream()
                 .filter(participant -> participant.getClass().equals(Dealer.class))
                 .findFirst()
                 .get();
-
-        //2. 딜러 카드 상태
-        return CardsStatus.getCardsStatus(dealer.getCardsSum());
     }
 
     private static double _getMultiplyNumber(List<Participant> participants) {
-        if (CardsStatus.BLACKJACK == _getDealerCardsStatus(participants)) {
+        if (CardsStatus.isBLACKJACK(_getDealer(participants).getCardsSum())) {
             return 1.0;
         }
         return 1.5;

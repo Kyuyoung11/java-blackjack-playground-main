@@ -35,6 +35,11 @@ public class Player extends Participant {
             this.provideCard(cardDispenser.getRandomOneCard());
             this.printInitCards();
         }
+
+        //2. 21초과하면 금액 0
+        if (super.getCardsSum() > LIMIT_MORE_CARD_SUM) {
+            this.amount = 0;
+        }
     }
 
     public void initBetAmount() {

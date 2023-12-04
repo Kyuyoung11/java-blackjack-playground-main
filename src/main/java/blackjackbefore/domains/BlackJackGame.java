@@ -6,6 +6,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BlackJackGame {
+    /**
+     * TODO 고칠 부분
+     * 1. play() 메소드 안에 Dealer, List<Player>를 분리한 로직
+     * 2.
+     */
     private final List<Participant> participants;
     private final CardDispenser cardDispenser;
 
@@ -47,6 +52,6 @@ public class BlackJackGame {
     }
 
     public void calculateAmount() {
-
+        AmountCalculator.calculateAmount(participants);
     }
 }
