@@ -18,7 +18,10 @@ public class AmountCalculator {
             _changeParticipantsAmount(participants,
                     participant -> CardsStatus.isNORMAL(participant.getCardsSum()) && dealer.getCardsSum() > participant.getCardsSum(),
                     -1);
+            return;
         }
+
+        _changeParticipantsAmount(participants, participant -> CardsStatus.isBURST(participant.getCardsSum()), -1);
 
 
 

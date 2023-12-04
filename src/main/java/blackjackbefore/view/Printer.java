@@ -27,4 +27,17 @@ public class Printer {
         System.out.print(participant.getName()+"카드: "+cards);
         System.out.println(" - 결과: "+participant.getCardsSum());
     }
+
+    public static void printAmount(List<Participant> participants) {
+        int dealerAmount = participants.stream()
+                .filter(participant -> participant.getClass().equals(Player.class))
+                .mapToInt(player -> ((Player) player).getAmount())
+                .sum();
+        System.out.println("딜러: "+(dealerAmount*-1));
+
+
+        participants.stream()
+                .filter(participant -> participant.getClass().equals(Player.class))
+                .forEach(player -> System.out.println(player.getName()+": "+((Player)player).getAmount()));
+    }
 }

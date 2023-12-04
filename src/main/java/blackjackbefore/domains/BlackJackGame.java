@@ -55,5 +55,7 @@ public class BlackJackGame {
 
     public void calculateAmount() {
         AmountCalculator.calculateAmount(participants);
+
+        Printer.printAmount(participants);
     }
 }

@@ -28,7 +28,7 @@ public class Player extends Participant {
 
     @Override
     public boolean isProvideMoreCard() {
-        if (this.getCardsSum() > LIMIT_MORE_CARD_SUM) return false;
+        if (this.getCardsSum() >= LIMIT_MORE_CARD_SUM) return false;
         return InputView.askForAdditionalCard(super.getName());
 
     }
@@ -38,11 +38,6 @@ public class Player extends Participant {
         while (isProvideMoreCard()) {
             this.provideCard(cardDispenser.getRandomOneCard());
             this.printInitCards();
-        }
-
-        //2. 21초과하면 금액 0
-        if (super.getCardsSum() > LIMIT_MORE_CARD_SUM) {
-            this.amount = this.amount * -1;
         }
     }
 
