@@ -17,6 +17,10 @@ public class Player extends Participant {
         this.amount = amount;
     }
 
+    public int getAmount() {
+        return amount;
+    }
+
     @Override
     public void printInitCards() {
         Printer.printCards(this, this.getCards().getSize());
@@ -24,7 +28,7 @@ public class Player extends Participant {
 
     @Override
     public boolean isProvideMoreCard() {
-        if (this.getCardsSum() > LIMIT_MORE_CARD_SUM) return false;
+        if (this.getCardsSum() >= LIMIT_MORE_CARD_SUM) return false;
         return InputView.askForAdditionalCard(super.getName());
 
     }
