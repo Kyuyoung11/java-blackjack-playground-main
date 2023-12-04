@@ -9,9 +9,10 @@ public class BlackJackGame {
     private final List<Participant> participants;
     private final CardDispenser cardDispenser;
 
-    public BlackJackGame(List<Participant> participants) {
-        this.participants = new ArrayList<>();
+    public BlackJackGame(List<Player> participants) {
         this.cardDispenser = new CardDispenser();
+
+        this.participants = new ArrayList<>();
         this.participants.add(new Dealer());
         this.participants.addAll(participants);
     }

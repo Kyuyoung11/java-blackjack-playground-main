@@ -2,16 +2,16 @@ package blackjackbefore;
 
 import blackjackbefore.domains.BlackJackGame;
 import blackjackbefore.domains.Player;
+import blackjackbefore.view.InputView;
 
 import java.util.Arrays;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        Player p1 = new Player("pobi");
-        Player p2 = new Player("crong");
-        Player p3 = new Player("loopy");
+        List<Player> players = InputView.getPlayers();
 
-        BlackJackGame blackJackGame = new BlackJackGame(Arrays.asList(p1,p2,p3));
+        BlackJackGame blackJackGame = new BlackJackGame(players);
 
         //1. 베팅 금액 입력
         blackJackGame.setBetAmount();
