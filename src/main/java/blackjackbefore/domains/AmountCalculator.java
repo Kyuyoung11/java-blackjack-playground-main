@@ -11,13 +11,13 @@ public class AmountCalculator {
 
         if (CardsStatus.isBURST(dealer.getCardsSum())) return;
         if (CardsStatus.isBLACKJACK(dealer.getCardsSum())) {
-            _changeParticipantsAmount(participants, participant -> CardsStatus.isNORMAL(participant.getCardsSum()), 0);
+            _changeParticipantsAmount(participants, participant -> CardsStatus.isNORMAL(participant.getCardsSum()), -1);
             return;
         }
         if (CardsStatus.isNORMAL(dealer.getCardsSum())) {
             _changeParticipantsAmount(participants,
                     participant -> CardsStatus.isNORMAL(participant.getCardsSum()) && dealer.getCardsSum() > participant.getCardsSum(),
-                    0);
+                    -1);
         }
 
 
