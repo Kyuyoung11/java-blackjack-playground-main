@@ -6,13 +6,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BlackJackGame {
-    //TODO Dealer와 List<Player>로 분리하는게 나을 듯
     private final List<Participant> participants;
     private final CardDispenser cardDispenser;
 
-    public BlackJackGame(List<Participant> participants) {
-        this.participants = new ArrayList<>();
+    public BlackJackGame(List<Player> participants) {
         this.cardDispenser = new CardDispenser();
+
+        this.participants = new ArrayList<>();
         this.participants.add(new Dealer());
         this.participants.addAll(participants);
     }
