@@ -1,15 +1,13 @@
 package blackjackfeedback.domains.state;
 
+
 import blackjackfeedback.domains.card.Cards;
 
 public abstract class Started implements State{
-    public final Cards cards;
+    private Cards cards;
 
-    protected Started(Cards cards) {
-        this.cards = cards;
-    }
-
+    @Override
     public Cards cards() {
-        return new Cards();
+        return cards;
     }
 }
