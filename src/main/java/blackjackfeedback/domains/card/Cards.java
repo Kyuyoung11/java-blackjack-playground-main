@@ -19,7 +19,7 @@ public class Cards {
 
     public int sum() {
         return cards.stream()
-                .mapToInt(card->card.getScore())
+                .mapToInt(Card::getScore)
                 .sum();
     }
 }

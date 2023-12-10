@@ -4,8 +4,8 @@ import blackjackfeedback.enums.Denomination;
 import blackjackfeedback.enums.Suit;
 
 public class Card {
-    private Denomination denomination;
-    private Suit suit;
+    private final Denomination denomination;
+    private final Suit suit;
 
     public Card(Denomination denomination, Suit suit) {
         this.denomination = denomination;
