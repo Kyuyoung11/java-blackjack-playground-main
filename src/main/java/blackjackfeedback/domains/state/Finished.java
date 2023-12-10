@@ -1,8 +1,15 @@
 package blackjackfeedback.domains.state;
 
+import blackjackfeedback.domains.card.Cards;
 import blackjackfeedback.domains.card.PlayingCard;
 
 public abstract class Finished extends Started{
+    public Cards cards;
+
+    public Finished(Cards cards) {
+        this.cards = cards;
+    }
+
     @Override
     public State draw(PlayingCard playingCard) {
         return null;
