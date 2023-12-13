@@ -4,7 +4,7 @@ import blackjackfeedback.domains.card.Cards;
 import blackjackfeedback.domains.card.PlayingCard;
 
 public interface State {
-    public State draw(PlayingCard playingCard);
+    public State draw(PlayingCard card);
 
     public State stay();
 
