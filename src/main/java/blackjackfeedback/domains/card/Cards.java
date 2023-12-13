@@ -4,12 +4,12 @@ import java.util.List;
 
 public class Cards {
     private static final int BLACKJACK_NUMBER = 21;
-    private List<Card> cards;
-    public Cards(List<Card> cards) {
+    private List<PlayingCard> cards;
+    public Cards(List<PlayingCard> cards) {
         this.cards = cards;
     }
 
-    public void add(Card card) {
+    public void add(PlayingCard card) {
         cards.add(card);
     }
 
@@ -19,7 +19,7 @@ public class Cards {
 
     public int sum() {
         return cards.stream()
-                .mapToInt(Card::getScore)
+                .mapToInt(PlayingCard::getScore)
                 .sum();
     }
 }
