@@ -1,5 +1,7 @@
 package blackjackfeedback.domains.card;
 
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 public class Cards {
@@ -21,5 +23,13 @@ public class Cards {
         return cards.stream()
                 .mapToInt(PlayingCard::getScore)
                 .sum();
+    }
+
+    public int getSize() {
+        return cards.size();
+    }
+
+    public void doShuffle() {
+        Collections.shuffle(this.cards);
     }
 }
