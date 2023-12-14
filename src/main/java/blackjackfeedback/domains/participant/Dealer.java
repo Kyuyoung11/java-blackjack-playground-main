@@ -1,4 +1,5 @@
 package blackjackfeedback.domains.participant;
 
-public class Dealer {
+public class Dealer extends Participant{
+
 }
