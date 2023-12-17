@@ -6,4 +6,7 @@ public abstract class Participant {
 
     State state;
 
+    public void provideInitCards() {
+//        state = new Started();
+    }
 }
