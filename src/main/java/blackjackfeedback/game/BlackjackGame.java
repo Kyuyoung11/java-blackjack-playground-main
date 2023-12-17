@@ -1,5 +1,6 @@
 package blackjackfeedback.game;
 
+import blackjackfeedback.domains.card.Deck;
 import blackjackfeedback.domains.participant.Dealer;
 import blackjackfeedback.domains.participant.Players;
 import blackjackfeedback.domains.participant.Player;
@@ -15,13 +16,18 @@ public class BlackjackGame {
     ResultView resultView;
 
     public void play() {
+        //초기 설정
         Dealer dealer = new Dealer();
+        Deck deck = new Deck();
+        deck.doShuffle();
 
         //1. 플레이어, 베팅금액 입력
         Players players = new Players(_convertToPlayer(inputView.getPlayersInput()));
 
         //2. 카드 지급
+        dealer.provideInitCards();
         resultView.printProvideCards(players);
+
 
 
 
