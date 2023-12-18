@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class BlackjackGame {
+    private static final int INIT_PROVIDE_CARD_COUNT = 2;
     InputView inputView;
     ResultView resultView;
 
@@ -25,10 +26,7 @@ public class BlackjackGame {
         Players players = new Players(_convertToPlayer(inputView.getPlayersInput()));
 
         //2. 카드 지급
-        dealer.provideInitCards();
-        resultView.printProvideCards(players);
-
-
+        _provideInitCards(dealer, players, deck);
 
 
     }
@@ -38,4 +36,20 @@ public class BlackjackGame {
                 .map(name -> new Player(name, inputView.getPlayerAmount(name)))
                 .collect(Collectors.toList());
     }
+
+
+    /**
+     * 시작 카드 지급
+     */
+    private void _provideInitCards(Dealer dealer, Players players, Deck deck) {
+        //1. 딜러 카드 지급
+        dealer.provideInitCards(deck.getCountCards(INIT_PROVIDE_CARD_COUNT));
+
+        //2. 플레이어 카드 지급
+        players.forEach(player -> player.provideInitCards(deck.getCountCards(INIT_PROVIDE_CARD_COUNT)));
+
+        //3. 프린트
+        resultView.printProvideCards(players);
+    }
+
 }
