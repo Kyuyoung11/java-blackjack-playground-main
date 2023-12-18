@@ -10,9 +10,11 @@ import java.util.List;
 
 public class Deck {
     private Cards cards;
+    private int index;
 
     public Deck() {
         this.cards = new Cards(_makeInitDeck());
+        this.index = 0;
     }
 
     private List<PlayingCard> _makeInitDeck() {
@@ -31,6 +33,22 @@ public class Deck {
 
     public int getSize() {
         return cards.getSize();
+    }
+
+    /**
+     * 카운트 만큼의 cards 생성 후 리턴
+     */
+    public Cards getCountCards(int count) {
+        List<PlayingCard> slicedCards = new ArrayList<>();
+
+        for (int i =0; i<count; i++) {
+            PlayingCard card = this.cards.getCardIndex(this.index);
+            this.index++;
+            slicedCards.add(card);
+        }
+
+        return new Cards(slicedCards);
+
     }
 
 
