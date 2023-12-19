@@ -4,10 +4,8 @@ import blackjackfeedback.domains.card.Cards;
 
 public abstract class Running extends Started{
 
-    public Cards cards;
-
-    public Running(Cards cards) {
-        this.cards = cards;
+    public Running(final Cards cards) {
+        super(cards);
     }
 
     @Override
@@ -16,7 +14,8 @@ public abstract class Running extends Started{
     }
 
     @Override
-    public double profit(double rate) {
+    public double profit(double amount) {
+        // TODO ?
         return 0;
     }
 }

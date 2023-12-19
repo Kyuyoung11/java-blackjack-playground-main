@@ -4,10 +4,9 @@ import blackjackfeedback.domains.card.Cards;
 import blackjackfeedback.domains.card.PlayingCard;
 
 public abstract class Finished extends Started{
-    public Cards cards;
 
     public Finished(Cards cards) {
-        this.cards = cards;
+        super(cards);
     }
 
     @Override
@@ -22,12 +21,12 @@ public abstract class Finished extends Started{
 
     @Override
     public boolean isFinished() {
-        return false;
+        return true;
     }
 
     @Override
-    public double profit(double rate) {
-        return 0;
+    public double profit(double amount) {
+        return amount * earningRate();
     }
 
     public abstract double earningRate();

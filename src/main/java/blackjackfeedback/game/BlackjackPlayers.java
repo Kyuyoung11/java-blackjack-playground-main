@@ -1,14 +1,16 @@
-package blackjackfeedback.domains.participant;
+package blackjackfeedback.game;
+
+import blackjackfeedback.domains.participant.Player;
 
 import java.util.Iterator;
 import java.util.List;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
-public class Players implements Iterable<Player>{
+public class BlackjackPlayers implements Iterable<Player>{
     List<Player> players;
 
-    public Players(List<Player> players) {
+    public BlackjackPlayers(List<Player> players) {
         this.players = players;
     }
 
@@ -17,6 +19,8 @@ public class Players implements Iterable<Player>{
                 .map(Player::getName)
                 .collect(Collectors.joining(","));
     }
+
+
 
     @Override
     public Iterator<Player> iterator() {
@@ -27,4 +31,5 @@ public class Players implements Iterable<Player>{
     public void forEach(Consumer<? super Player> action) {
         Iterable.super.forEach(action);
     }
+
 }

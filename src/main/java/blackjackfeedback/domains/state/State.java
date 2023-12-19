@@ -12,5 +12,5 @@ public interface State {
 
     public Cards cards();
 
-    public double profit(double rate);
+    public double profit(double amount);
 }
