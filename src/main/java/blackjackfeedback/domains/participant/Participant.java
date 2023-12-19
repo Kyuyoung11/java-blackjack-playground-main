@@ -2,26 +2,40 @@ package blackjackfeedback.domains.participant;
 
 
 import blackjackfeedback.domains.card.Cards;
-import blackjackfeedback.domains.state.Blackjack;
+import blackjackfeedback.domains.card.PlayingCard;
 import blackjackfeedback.domains.state.Hit;
 import blackjackfeedback.domains.state.State;
 
 public abstract class Participant {
-    private static final int BLACKJACK_NUMBER = 21;
 
-    State state;
+    protected State state;
+    protected String name;
 
+    public Participant(String name) {
+        this.name = name;
+        this.state = new Hit(new Cards());
+    }
 
-    public void provideInitCards(Cards cards) {
-        if (cards.sum() == BLACKJACK_NUMBER) {
-            state = new Blackjack(cards);
-            return;
-        }
-
-        state = new Hit(cards);
+    public String getName() {
+        return name;
     }
 
     public State getState() {
         return state;
     }
+
+    public void draw(PlayingCard card) {
+        this.state = this.state.draw(card);
+    }
+
+    public void stay() {
+        this.state = this.state.stay();
+    }
+
+    public int getScoreSum() {
+        return this.state.cards().sum();
+    }
+
+
+
 }
