@@ -2,18 +2,12 @@ package blackjackfeedback.domains.participant;
 
 
 public class Player extends Participant{
-    String name;
     int amount;
 
     public Player(String name, int amount) {
-        this.name = name;
+        super(name);
         this.amount = amount;
     }
-
-    public String getName() {
-        return name;
-    }
-
     public int getAmount() {
         return amount;
     }

@@ -9,7 +9,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Deck {
-    private Cards cards;
+    private final Cards cards;
     private int index;
 
     public Deck() {
@@ -35,20 +35,9 @@ public class Deck {
         return cards.getSize();
     }
 
-    /**
-     * 카운트 만큼의 cards 생성 후 리턴
-     */
-    public Cards getCountCards(int count) {
-        List<PlayingCard> slicedCards = new ArrayList<>();
 
-        for (int i =0; i<count; i++) {
-            PlayingCard card = this.cards.getCardIndex(this.index);
-            this.index++;
-            slicedCards.add(card);
-        }
-
-        return new Cards(slicedCards);
-
+    public PlayingCard getOneCard() {
+        return this.cards.getCardIndex(this.index++);
     }
 
 

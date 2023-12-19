@@ -15,4 +15,10 @@ public class InputView {
         Scanner sc = new Scanner(System.in);
         return sc.nextInt();
     }
+
+    public String askForAdditionalCard(String name) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println(name+"은/는 한장의 카드를 더 받겠습니까?(예는 y, 아니오는 n)");
+        return sc.next();
+    }
 }
