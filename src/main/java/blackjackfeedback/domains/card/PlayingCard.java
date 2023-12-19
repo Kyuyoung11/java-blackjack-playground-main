@@ -3,6 +3,7 @@ package blackjackfeedback.domains.card;
 import blackjackfeedback.enums.Denomination;
 import blackjackfeedback.enums.Suit;
 
+
 public class PlayingCard {
     private final Denomination denomination;
     private final Suit suit;
@@ -22,5 +23,9 @@ public class PlayingCard {
 
     public Suit getSuit() {
         return suit;
+    }
+
+    public String convertToString() {
+        return getScore() + getSuit().getName();
     }
 }
