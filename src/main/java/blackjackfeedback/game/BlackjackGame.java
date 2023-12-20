@@ -98,11 +98,11 @@ public class BlackjackGame {
      * 시작 카드 지급
      */
     private void _provideInitCards(Dealer dealer, BlackjackPlayers players, Deck deck) {
-        //1. 딜러, 플레이어 2장씩 카드 지급
-        for (int i =0; i<INIT_PROVIDE_CARD_COUNT; i++) {
-            dealer.draw(deck.getOneCard());
-            players.forEach(player -> player.draw(deck.getOneCard()));
-        }
+        //1. 딜러 카드 지급
+        dealer.provideInitCards(deck.getCountCards(INIT_PROVIDE_CARD_COUNT));
+
+        //2. 플레이어 카드 지급
+        players.forEach(player -> player.provideInitCards(deck.getCountCards(INIT_PROVIDE_CARD_COUNT)));
 
         //3. 프린트
         resultView.printProvideCards(players);
@@ -110,7 +110,7 @@ public class BlackjackGame {
         //4. 카드 보유 프린트
         resultView.printOwnedCardsCount(dealer, 1);
         players.forEach(player-> resultView.printOwnedCards(player));
-
     }
+
 
 }

@@ -56,6 +56,8 @@ public class ParticipantTest {
         ResultView resultView = new ResultView();
         resultView.printOwnedCards(p1);
 
+        System.out.println(p1.getScoreSum());
+
         assertEquals(p1.getScoreSum(),21);
         assertTrue(p1.getState() instanceof Blackjack);
     }
