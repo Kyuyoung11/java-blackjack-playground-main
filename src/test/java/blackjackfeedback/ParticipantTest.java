@@ -31,10 +31,9 @@ public class ParticipantTest {
         Player p1 = new Player("p1", 100);
 
         PlayingCard c1 = new PlayingCard(Denomination.SIX, Suit.CLUBS);
-        p1.draw(c1);
-
         PlayingCard c2 = new PlayingCard(Denomination.ACE, Suit.HEARTS);
-        p1.draw(c2);
+
+        p1.provideInitCards(new Cards(Arrays.asList(c1, c2)));
 
         ResultView resultView = new ResultView();
         resultView.printOwnedCards(p1);
@@ -48,10 +47,10 @@ public class ParticipantTest {
 
         Player p1 = new Player("p1", 100);
         PlayingCard c1 = new PlayingCard(Denomination.KING, Suit.CLUBS);
-        p1.draw(c1);
 
         PlayingCard c2 = new PlayingCard(Denomination.ACE, Suit.HEARTS);
-        p1.draw(c2);
+
+        p1.provideInitCards(new Cards(Arrays.asList(c1, c2)));
 
         ResultView resultView = new ResultView();
         resultView.printOwnedCards(p1);

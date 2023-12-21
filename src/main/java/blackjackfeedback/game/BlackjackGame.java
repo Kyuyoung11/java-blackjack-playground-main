@@ -16,7 +16,13 @@ public class BlackjackGame {
     InputView inputView;
     ResultView resultView;
 
+    public BlackjackGame() {
+        this.inputView = new InputView();
+        this.resultView = new ResultView();
+    }
+
     public void play() {
+
         //초기 설정
         Dealer dealer = new Dealer();
         Deck deck = new Deck();
@@ -34,15 +40,32 @@ public class BlackjackGame {
         //4. 점수 집계
         _calculateScore(dealer, players);
 
+        //5. 수익 계산
+        _calculateProfit(dealer, players);
+
+
+    }
+
+    private void _calculateProfit(Dealer dealer, BlackjackPlayers players) {
+        if (dealer.getState().isFinished()) return;
+
+        int dealerScore = dealer.getScoreSum();
+        players.compareToDealerScore(dealerScore);
+
+        for (Player player : players) {
+            System.out.println(player.getName() + player.getState().getClass());
+        }
+        players.applyProfit();
+        resultView.printProfit(dealer, players);
 
     }
 
     private void _calculateScore(Dealer dealer, BlackjackPlayers players) {
         //1. 딜러카드 집계 및 출력
-        resultView.printOwnedCards(dealer);
+        resultView.printOwnedCardsWithScore(dealer);
 
         //2. 플레이어 카드 집계 및 출력
-        players.forEach(player -> resultView.printOwnedCards(player));
+        players.forEach(player -> resultView.printOwnedCardsWithScore(player));
     }
 
     private void _provideAdditionalCards(Dealer dealer, BlackjackPlayers players, Deck deck) {

@@ -4,6 +4,7 @@ package blackjackfeedback.domains.participant;
 import blackjackfeedback.domains.card.Cards;
 import blackjackfeedback.domains.card.PlayingCard;
 import blackjackfeedback.domains.state.Blackjack;
+import blackjackfeedback.domains.state.Bust;
 import blackjackfeedback.domains.state.Hit;
 import blackjackfeedback.domains.state.State;
 
@@ -33,6 +34,11 @@ public abstract class Participant {
 
         state = new Hit(cards);
     }
+
+    public void changeStateToBust() {
+        this.state = new Bust(this.state.cards());
+    }
+
 
     public void draw(PlayingCard card) {
         this.state = this.state.draw(card);

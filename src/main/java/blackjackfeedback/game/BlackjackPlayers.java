@@ -1,6 +1,9 @@
 package blackjackfeedback.game;
 
+import blackjackfeedback.domains.participant.Participant;
 import blackjackfeedback.domains.participant.Player;
+import blackjackfeedback.domains.state.Hit;
+import blackjackfeedback.domains.state.Stay;
 
 import java.util.Iterator;
 import java.util.List;
@@ -20,8 +23,6 @@ public class BlackjackPlayers implements Iterable<Player>{
                 .collect(Collectors.joining(","));
     }
 
-
-
     @Override
     public Iterator<Player> iterator() {
         return players.iterator();
@@ -32,4 +33,15 @@ public class BlackjackPlayers implements Iterable<Player>{
         Iterable.super.forEach(action);
     }
 
+    public void compareToDealerScore(int dealerScore) {
+        //stay상태인게 dealerScore보다 낮으면 bust처리
+        this.players.stream()
+                .filter(player -> player.getState() instanceof Stay)
+                .filter(player -> player.getScoreSum() < dealerScore)
+                .forEach(Participant::changeStateToBust);
+    }
+
+    public void applyProfit() {
+        players.forEach(player -> player.setAmount((int)player.getState().profit(player.getAmount())));
+    }
 }
