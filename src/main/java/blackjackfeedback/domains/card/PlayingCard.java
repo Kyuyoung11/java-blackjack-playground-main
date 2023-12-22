@@ -26,6 +26,6 @@ public class PlayingCard {
     }
 
     public String convertToString() {
-        return getScore() + getSuit().getName();
+        return getDenomination().getName() + getSuit().getName();
     }
 }

@@ -16,7 +16,13 @@ public class BlackjackGame {
     InputView inputView;
     ResultView resultView;
 
+    public BlackjackGame() {
+        this.inputView = new InputView();
+        this.resultView = new ResultView();
+    }
+
     public void play() {
+
         //초기 설정
         Dealer dealer = new Dealer();
         Deck deck = new Deck();
@@ -34,15 +40,32 @@ public class BlackjackGame {
         //4. 점수 집계
         _calculateScore(dealer, players);
 
+        //5. 수익 계산
+        _calculateProfit(dealer, players);
+
+
+    }
+
+    private void _calculateProfit(Dealer dealer, BlackjackPlayers players) {
+        if (dealer.getState().isFinished()) return;
+
+        int dealerScore = dealer.getScoreSum();
+        players.compareToDealerScore(dealerScore);
+
+        for (Player player : players) {
+            System.out.println(player.getName() + player.getState().getClass());
+        }
+        players.applyProfit();
+        resultView.printProfit(dealer, players);
 
     }
 
     private void _calculateScore(Dealer dealer, BlackjackPlayers players) {
         //1. 딜러카드 집계 및 출력
-        resultView.printOwnedCards(dealer);
+        resultView.printOwnedCardsWithScore(dealer);
 
         //2. 플레이어 카드 집계 및 출력
-        players.forEach(player -> resultView.printOwnedCards(player));
+        players.forEach(player -> resultView.printOwnedCardsWithScore(player));
     }
 
     private void _provideAdditionalCards(Dealer dealer, BlackjackPlayers players, Deck deck) {
@@ -98,11 +121,11 @@ public class BlackjackGame {
      * 시작 카드 지급
      */
     private void _provideInitCards(Dealer dealer, BlackjackPlayers players, Deck deck) {
-        //1. 딜러, 플레이어 2장씩 카드 지급
-        for (int i =0; i<INIT_PROVIDE_CARD_COUNT; i++) {
-            dealer.draw(deck.getOneCard());
-            players.forEach(player -> player.draw(deck.getOneCard()));
-        }
+        //1. 딜러 카드 지급
+        dealer.provideInitCards(deck.getCountCards(INIT_PROVIDE_CARD_COUNT));
+
+        //2. 플레이어 카드 지급
+        players.forEach(player -> player.provideInitCards(deck.getCountCards(INIT_PROVIDE_CARD_COUNT)));
 
         //3. 프린트
         resultView.printProvideCards(players);
@@ -110,7 +133,7 @@ public class BlackjackGame {
         //4. 카드 보유 프린트
         resultView.printOwnedCardsCount(dealer, 1);
         players.forEach(player-> resultView.printOwnedCards(player));
-
     }
+
 
 }

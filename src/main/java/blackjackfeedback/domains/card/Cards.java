@@ -30,6 +30,10 @@ public class Cards {
         return sum() > BLACKJACK_NUMBER;
     }
 
+    public boolean isBlackjack() {
+        return sum() == BLACKJACK_NUMBER;
+    }
+
 
     public int sum() {
         int sum = this.cards.stream()
@@ -68,4 +72,5 @@ public class Cards {
                 .map(PlayingCard::convertToString)
                 .collect(Collectors.joining(", "));
     }
+
 }

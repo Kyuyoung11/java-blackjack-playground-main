@@ -2,6 +2,7 @@ package blackjackfeedback.view;
 
 import blackjackfeedback.domains.card.Cards;
 import blackjackfeedback.domains.card.PlayingCard;
+import blackjackfeedback.domains.participant.Dealer;
 import blackjackfeedback.domains.participant.Participant;
 import blackjackfeedback.game.BlackjackPlayers;
 
@@ -40,5 +41,9 @@ public class ResultView {
 
     public void printDealerGetMoreCard() {
         System.out.println("딜러는 16이하라 한장의 카드를 더 받았습니다.");
+    }
+
+    public void printProfit(Dealer dealer, BlackjackPlayers players) {
+        players.forEach(player -> System.out.println(player.getName() + " : " + player.getAmount()));
     }
 }
