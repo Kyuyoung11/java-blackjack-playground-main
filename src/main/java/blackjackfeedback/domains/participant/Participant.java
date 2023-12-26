@@ -3,10 +3,7 @@ package blackjackfeedback.domains.participant;
 
 import blackjackfeedback.domains.card.Cards;
 import blackjackfeedback.domains.card.PlayingCard;
-import blackjackfeedback.domains.state.Blackjack;
-import blackjackfeedback.domains.state.Bust;
-import blackjackfeedback.domains.state.Hit;
-import blackjackfeedback.domains.state.State;
+import blackjackfeedback.domains.state.*;
 
 public abstract class Participant {
 
@@ -40,6 +37,10 @@ public abstract class Participant {
     }
 
 
+    public void changeStateToStay() { this.state = new Stay(this.state.cards());
+    }
+
+
     public void draw(PlayingCard card) {
         this.state = this.state.draw(card);
     }
@@ -51,7 +52,6 @@ public abstract class Participant {
     public int getScoreSum() {
         return this.state.cards().sum();
     }
-
 
 
 }
