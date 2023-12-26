@@ -44,6 +44,9 @@ public class ResultView {
     }
 
     public void printProfit(Dealer dealer, BlackjackPlayers players) {
+        int playerProfitsSum = players.getTotalSum();
+        System.out.println("## 최종 수익");
+        System.out.println(dealer.getName() + ": " + playerProfitsSum * (-1));
         players.forEach(player -> System.out.println(player.getName() + " : " + player.getAmount()));
     }
 }

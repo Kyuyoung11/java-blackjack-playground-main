@@ -4,6 +4,8 @@ import blackjackbefore.enums.YnEnum;
 import blackjackfeedback.domains.card.Deck;
 import blackjackfeedback.domains.participant.Dealer;
 import blackjackfeedback.domains.participant.Player;
+import blackjackfeedback.domains.state.Blackjack;
+import blackjackfeedback.domains.state.Bust;
 import blackjackfeedback.view.InputView;
 import blackjackfeedback.view.ResultView;
 
@@ -47,17 +49,22 @@ public class BlackjackGame {
     }
 
     private void _calculateProfit(Dealer dealer, BlackjackPlayers players) {
-        if (dealer.getState().isFinished()) return;
+        if (dealer.getState() instanceof Blackjack) {
+            players.applyBlackjack();
+        }
 
-        int dealerScore = dealer.getScoreSum();
+        int dealerScore = getFinalDealerSum(dealer);
         players.compareToDealerScore(dealerScore);
 
-        for (Player player : players) {
-            System.out.println(player.getName() + player.getState().getClass());
-        }
         players.applyProfit();
         resultView.printProfit(dealer, players);
 
+
+    }
+
+    private static int getFinalDealerSum(Dealer dealer) {
+        if (dealer.getState() instanceof Bust) return 0;
+        return dealer.getScoreSum();
     }
 
     private void _calculateScore(Dealer dealer, BlackjackPlayers players) {

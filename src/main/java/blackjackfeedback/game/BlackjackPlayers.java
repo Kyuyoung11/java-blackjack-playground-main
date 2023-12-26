@@ -2,6 +2,7 @@ package blackjackfeedback.game;
 
 import blackjackfeedback.domains.participant.Participant;
 import blackjackfeedback.domains.participant.Player;
+import blackjackfeedback.domains.state.Blackjack;
 import blackjackfeedback.domains.state.Hit;
 import blackjackfeedback.domains.state.Stay;
 
@@ -43,5 +44,17 @@ public class BlackjackPlayers implements Iterable<Player>{
 
     public void applyProfit() {
         players.forEach(player -> player.setAmount((int)player.getState().profit(player.getAmount())));
+    }
+
+    public int getTotalSum() {
+        return players.stream()
+                .mapToInt(Player::getAmount)
+                .sum();
+    }
+
+    public void applyBlackjack() {
+        players.stream()
+                .filter(player -> player.getState() instanceof Blackjack)
+                .forEach(Participant::changeStateToStay);
     }
 }
